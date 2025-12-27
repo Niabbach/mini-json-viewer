@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  font-family: Segoe UI;
+}
+
+header {
+  padding: 20px;
+  background: #020617;
+  display: grid;
+  gap: 10px;
+}
+
+input, select {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 140px);
+}
+
+.card {
+  background: #020617;
+  padding: 25px;
+  border-radius: 14px;
+  width: 350px;
+  box-shadow: 0 0 15px #000;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.topbar {
+  background: #020617;
+  padding: 20px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
