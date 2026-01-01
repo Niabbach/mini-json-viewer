@@ -1,11 +1,11 @@
 let allSignals = {};
 let signalNames = [];
 
-fetch("data/ACDC_static.json")
+fetch("data/ACDC_timeseries.json")
   .then(r => r.json())
   .then(json => {
-    allSignals = json;
-    signalNames = Object.keys(json);
+    allSignals = json.signals;
+    signalNames = Object.keys(allSignals);
     populate(signalNames);
   });
 
@@ -31,6 +31,8 @@ function populate(list) {
 
 function show(name) {
   const v = allSignals[name];
+  if (!v) return;
+
   const min = Math.min(...v);
   const max = Math.max(...v);
   const fin = v[v.length - 1];
@@ -38,9 +40,9 @@ function show(name) {
   document.getElementById("viewer").innerHTML = `
     <div class="card">
       <h2>${name}</h2>
-      <div class="stat"><span>Min</span><span>${min.toFixed(3)}</span></div>
-      <div class="stat"><span>Max</span><span>${max.toFixed(3)}</span></div>
-      <div class="stat"><span>Final</span><span>${fin.toFixed(3)}</span></div>
+      <div class="stat"><span>Min</span><span>${min.toExponential(3)}</span></div>
+      <div class="stat"><span>Max</span><span>${max.toExponential(3)}</span></div>
+      <div class="stat"><span>Final</span><span>${fin.toExponential(3)}</span></div>
     </div>
   `;
 }
